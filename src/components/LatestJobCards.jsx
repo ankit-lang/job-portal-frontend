@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const LatestJobCards = ({job}) => {
     const navigate = useNavigate();
     return (
-        <div onClick={()=> navigate(`/description/${job._id}`)} className='p-5 rounded-md shadow-xl bg-white border border-gray-100 cursor-pointer'>
+        <div onClick={()=> navigate(`/description/${job._id}`)} className='p-5 rounded-md shadow-xl bg-gray-300 hover:scale-105 hover:bg-gray-400 border border-gray-100 cursor-pointer'>
             <div>
                 <h1 className='font-medium text-lg'>{job?.company?.name}</h1>
                 <p className='text-sm text-gray-500'>India</p>

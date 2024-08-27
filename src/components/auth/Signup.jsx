@@ -50,6 +50,7 @@ const Signup = () => {
                 headers: { 'Content-Type': "multipart/form-data" },
                 withCredentials: true,
             });
+            console.log(res.data)
             if (res.data.success) {
                 navigate("/login");
                 toast.success(res.data.message);
