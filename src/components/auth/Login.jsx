@@ -29,28 +29,23 @@ const Login = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
         try {
-            // dispatch(setLoading(true));
-            console.log("object")
+            dispatch(setLoading(true));
             const res = await axios.post(`${USER_API_END_POINT}/login`, input, {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                withCredentials: true
-                
+                withCredentials: true,
             });
-            console.log(res)
-            console.log(res.data)
-            if (res.data) {
+            if (res.data.success) {
                 dispatch(setUser(res.data.user));
-                localStorage.setItem("token",res.data.token)
                 navigate("/");
                 toast.success(res.data.message);
             }
         } catch (error) {
-            console.log(error.response.data,"err");
+            console.log(error);
             toast.error(error.response.data.message);
         } finally {
-            // dispatch(setLoading(false));
+            dispatch(setLoading(false));
         }
     }
     useEffect(()=>{
