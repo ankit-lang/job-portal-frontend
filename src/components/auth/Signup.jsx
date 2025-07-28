@@ -50,10 +50,11 @@ const Signup = () => {
                 headers: { 'Content-Type': "multipart/form-data" },
                 withCredentials: true,
             });
-            if (res.data.success) {
+            if (  res.data &&  res.data.success) {
                 navigate("/login");
                 toast.success(res.data.message);
             }
+            else throw new Error(res.data.message);
         } catch (error) {
             console.log(error);
             toast.error(error.response.data.message);
